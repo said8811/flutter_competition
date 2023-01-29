@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ColorModel {
-  Color colorA;
-  Color colorB;
+  String colorA;
+  String colorB;
 
   ColorModel({required this.colorA, required this.colorB});
 
   static List<ColorModel> colors = [
-    ColorModel(colorA: Colors.black, colorB: Colors.red),
-    ColorModel(colorA: Colors.blue, colorB: Colors.green),
-    ColorModel(colorA: Colors.green, colorB: Colors.yellow),
+    ColorModel(colorA: "0xff5646a3", colorB: "0xff44336"),
+    ColorModel(colorA: "0xff2196f3", colorB: "0xff4caf50"),
+    ColorModel(colorA: "0xff4caf50", colorB: "0xffffeb3b"),
   ];
 }

@@ -1,7 +1,7 @@
 class CardModel {
   String cardName;
   String cardNumber;
-  List<String> gradient;
+  List<dynamic> gradient;
   int moneyAmount;
   String owner;
   String expireDate;
@@ -30,7 +30,7 @@ class CardModel {
         expireDate: json['expire_date'] as String? ?? "",
         userId: json['user_id'] as String? ?? "",
         moneyAmount: json['money_amount'] as int? ?? 0,
-        gradient: json['gradient'] as List<String>? ?? [],
+        gradient: json['gradient'] as List<dynamic>? ?? [],
         iconImage: json['icon_image'] as String? ?? "");
   }
 
