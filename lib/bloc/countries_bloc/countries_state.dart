@@ -1,4 +1,4 @@
-import 'package:flutter_competition/data/models/country_model.dart/countries_model.dart';
+import 'package:flutter_competition/data/models/country_model.dart/country_model.dart';
 
 abstract class CountriesState {}
 

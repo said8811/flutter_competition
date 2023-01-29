@@ -4,6 +4,7 @@ import 'package:flutter_competition/bloc/countries_bloc/countries_bloc.dart';
 import 'package:flutter_competition/bloc/countries_bloc/countries_event.dart';
 import 'package:flutter_competition/bloc/countries_bloc/countries_state.dart';
 import 'package:flutter_competition/data/repository/countries_repository.dart';
+import 'package:flutter_competition/screens/tab_box/countries_page/detail_country_page.dart/country_info_page.dart';
 import 'package:flutter_competition/service/country_api_service/countries_api_service.dart';
 
 class CountriesPage extends StatelessWidget {
@@ -13,9 +14,7 @@ class CountriesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CountriesBloc(
-        CountriesRepository(
-          apiService: CountriesApiSerice()
-        ),
+        CountriesRepository(apiService: CountriesApiSerice()),
       )..add(GetCountries()),
       child: Scaffold(
         appBar: AppBar(
@@ -36,35 +35,38 @@ class CountriesPage extends StatelessWidget {
                 children: List.generate(state.countries.length, (index) {
                   var item = state.countries[index];
                   return ListTile(
+                    subtitle: Text(item.capital),
+                    trailing: Text(item.emoji),
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CountryInfoPage(country: item),
+                        )),
                     title: Text(
                       item.name,
                     ),
-                    // trailing: CachedNetworkImage(
-                    //   imageUrl: item.avatarUrl,
-                    //   placeholder: (context, url) =>
-                    //       const CircularProgressIndicator(),
-                    // ),
+                  );
+                }),
+              );
+            } else if (state is CountriesFromCache) {
+              return ListView(
+                children: List.generate(state.countries.length, (index) {
+                  var item = state.countries[index];
+                  return ListTile(
+                    subtitle: Text(item.capital),
+                    trailing: Text(item.emoji),
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CountryInfoPage(country: item),
+                        )),
+                    title: Text(
+                      item.name,
+                    ),
                   );
                 }),
               );
             }
-            // else if (state is UsersFromCache) {
-            //   return ListView(
-            //     children: List.generate(state.users.length, (index) {
-            //       var item = state.users[index];
-            //       return ListTile(
-            //         title: Text(
-            //           item.username,
-            //         ),
-            //         trailing: CachedNetworkImage(
-            //           imageUrl: item.avatarUrl,
-            //           placeholder: (context, url) =>
-            //           const CircularProgressIndicator(),
-            //         ),
-            //       );
-            //     }),
-            //   );
-            // }
             return const SizedBox();
           },
           listener: (context, state) {},
