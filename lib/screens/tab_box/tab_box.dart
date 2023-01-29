@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_competition/screens/tab_box/card_page/card_page.dart';
 
 class TabBox extends StatefulWidget {
   const TabBox({super.key});
@@ -12,7 +13,7 @@ class _TabBoxState extends State<TabBox> {
     Container(
       child: Text("Aaaaaaaaaaaaaaa"),
     ),
-    Container(),
+    const CardsPage(),
     Container(),
   ];
   int selectedPage = 0;
