@@ -12,7 +12,7 @@ class ApiClient {
   _init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: "https://third-exam.free.mockoapp.net",
+        baseUrl: "https://najot-exam.free.mockoapp.net",
         connectTimeout: 25000,
         receiveTimeout: 20000,
       ),

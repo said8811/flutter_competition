@@ -7,7 +7,7 @@ class CountriesApiSerice extends ApiClient {
   Future<MyResponse> getCategoryList() async {
     MyResponse myResponse = MyResponse(error: "");
     try {
-      Response response = await dio.get("${dio.options.baseUrl}/categories");
+      Response response = await dio.get("${dio.options.baseUrl}/countries");
 
       if (response.statusCode == 200) {
         myResponse.data = (response.data["data"]["countries"] as List)
