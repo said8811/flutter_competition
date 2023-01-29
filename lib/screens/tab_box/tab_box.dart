@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class TabBox extends StatefulWidget {
   const TabBox({super.key});
@@ -11,7 +9,9 @@ class TabBox extends StatefulWidget {
 
 class _TabBoxState extends State<TabBox> {
   List<Widget> screens = [
-    Container(),
+    Container(
+      child: Text("Aaaaaaaaaaaaaaa"),
+    ),
     Container(),
     Container(),
   ];
@@ -20,12 +20,14 @@ class _TabBoxState extends State<TabBox> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("TabBox"),
+        title: const Text("TabBox"),
       ),
       body: screens[selectedPage],
       bottomNavigationBar: BottomNavigationBar(
           onTap: (value) {
-            selectedPage = value;
+            setState(() {
+              selectedPage = value;
+            });
           },
           items: const [
             BottomNavigationBarItem(
