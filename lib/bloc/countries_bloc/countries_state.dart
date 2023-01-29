@@ -2,12 +2,23 @@ import 'package:flutter_competition/data/models/country_model.dart/countries_mod
 
 abstract class CountriesState {}
 
-class CountriesStateLoadInProgress extends CountriesState {}
+class CountriesInitial extends CountriesState {}
 
-class CountriesStateLoadSuccess extends CountriesState {
-  CountriesStateLoadSuccess(this.countries);
+class CountriesLoadInProgress extends CountriesState {}
+
+class CountriesLoadSuccess extends CountriesState {
+  CountriesLoadSuccess({required this.countries});
 
   final List<CountryModel> countries;
 }
 
-class CountriesStateLoadFailure extends CountriesState {}
+class CountriesLoadFailure extends CountriesState {
+  final String error;
+  CountriesLoadFailure({required this.error});
+}
+
+class CountriesFromCache extends CountriesState {
+  CountriesFromCache({required this.countries});
+
+  final List<CountryModel> countries;
+}
