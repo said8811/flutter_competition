@@ -14,10 +14,10 @@ class CardRepository {
 
   Future<void> addCard({required CardModel cardModel}) async {
     try {
-      DocumentReference newUser =
+      DocumentReference newCard =
           await _firestore.collection("cards").add(cardModel.toJson());
-      await _firestore.collection("cards").doc(newUser.id).update({
-        "card_id": newUser.id,
+      await _firestore.collection("cards").doc(newCard.id).update({
+        "card_id": newCard.id,
       });
       print("Card muvaffaqiyatli qo'shildi!");
     } on FirebaseException catch (er) {
