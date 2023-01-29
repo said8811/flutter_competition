@@ -19,9 +19,6 @@ class _TabBoxState extends State<TabBox> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("TabBox"),
-      ),
       body: screens[selectedPage],
       bottomNavigationBar: BottomNavigationBar(
           onTap: (value) {

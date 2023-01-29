@@ -1,8 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_competition/cubit/card_cubit/card_cubit.dart';
+import 'package:flutter_competition/data/repository/card_repository.dart';
 import 'package:flutter_competition/screens/tab_box/tab_box.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider(
+      create: (context) => CardsCubit(
+          CardRepository(firebaseFirestore: FirebaseFirestore.instance)),
+    )
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

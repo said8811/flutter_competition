@@ -7,7 +7,7 @@ class CardRepository {
   CardRepository({required FirebaseFirestore firebaseFirestore})
       : _firestore = firebaseFirestore;
 
-  Stream getDoctors() => _firestore.collection("cards").snapshots().map(
+  Stream getCards() => _firestore.collection("cards").snapshots().map(
         (event) =>
             event.docs.map((doc) => CardModel.fromJson(doc.data())).toList(),
       );
